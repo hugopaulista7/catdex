@@ -7,9 +7,32 @@
 
 import SwiftUI
 
+struct NavigationConfigurator: UIViewControllerRepresentable {
+    var configure: (UINavigationController) -> Void = { _ in }
+    
+    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> some UIViewController {
+        UIViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
+       if let nc  = uiViewController.navigationController {
+            self.configure(nc)
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        BreedList()
+        NavigationView {
+            ZStack {
+                MainColor.color.ignoresSafeArea()
+                VStack {
+                    BreedList()
+                }
+            }
+        .navigationTitle("CatDex")
+        .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 

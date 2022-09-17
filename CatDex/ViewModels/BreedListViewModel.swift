@@ -10,9 +10,10 @@ class BreedListViewModel: ObservableObject {
         
     let basePath = "breeds"
     @Published var breeds: [Breed] = []
+    @Published var loading = true
     
     func fetchData() {
-        print("aqui")
+        loading = true
         Api().callApi(basePath + "?limit=25&page=0", completion: {result in
             switch result {
             case .success(let data):
@@ -33,6 +34,7 @@ class BreedListViewModel: ObservableObject {
             let breeds = try decoder.decode([Breed].self, from: data)
             DispatchQueue.main.async {
                 self.breeds = breeds
+                self.loading = false
             }
             
         } catch {
