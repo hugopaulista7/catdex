@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct MainColor {
-    static let color = Color("Main")
+    static let color = Color("Primary")
 }
 
 struct SecondaryColor {

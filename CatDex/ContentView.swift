@@ -7,26 +7,24 @@
 
 import SwiftUI
 
-struct NavigationConfigurator: UIViewControllerRepresentable {
-    var configure: (UINavigationController) -> Void = { _ in }
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> some UIViewController {
-        UIViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
-       if let nc  = uiViewController.navigationController {
-            self.configure(nc)
-        }
-    }
-}
-
 struct ContentView: View {
     
     init() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = UIColor(Color.primary)
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(Color.light)]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.secondary)]
+        navBarAppearance.shadowColor = UIColor.black
+        
+        let navScrollAppearance = UINavigationBarAppearance()
+        
+        navScrollAppearance.titleTextAttributes = [.foregroundColor: UIColor(Color.primary)]
+        navScrollAppearance.backgroundColor = UIColor(Color.accent)
+        navScrollAppearance.shadowColor = UIColor(Color.accent)
+        
         UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navScrollAppearance
     }
     
     var body: some View {
@@ -35,7 +33,7 @@ struct ContentView: View {
                 VStack {
                     BreedList()
                 }
-            }.background(AccentColor.color)
+            }.background(Color.accent)
         .navigationTitle("CatDex")
         .navigationBarTitleDisplayMode(.inline)
         }

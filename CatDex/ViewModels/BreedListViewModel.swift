@@ -11,10 +11,32 @@ class BreedListViewModel: ObservableObject {
     let basePath = "breeds"
     @Published var breeds: [Breed] = []
     @Published var loading = true
+    private var currentPage = 0
+    private var canLoadMorPages = true
+    private var limit = 16
     
-    func fetchData() {
+    
+    init() {
+        fetchData()
+    }
+    
+    func loadMoreContentIfNeeded(currentItem item: Breed?) {
+        guard let item = item else {
+            fetchData()
+            return
+        }
+        
+        let thresholdIndex = breeds.index(breeds.endIndex, offsetBy: -16)
+        if breeds.firstIndex(where: {$0.id == item.id}) == thresholdIndex {
+            fetchData()
+        }
+        
+    }
+    
+    private func fetchData() {
         loading = true
-        Api().callApi(basePath + "?limit=25&page=0", completion: {result in
+        print("currentPage:: \(currentPage) ")
+        Api().callApi(basePath + "?limit=\(limit)&page=\(currentPage)", completion: {result in
             switch result {
             case .success(let data):
                 guard let dataUnwrapped = data else {return}
@@ -33,7 +55,13 @@ class BreedListViewModel: ObservableObject {
         do {
             let breeds = try decoder.decode([Breed].self, from: data)
             DispatchQueue.main.async {
-                self.breeds = breeds
+                self.currentPage += 1
+                if (self.breeds.count == 0) {
+                    self.breeds = breeds
+                } else {
+                    self.breeds.append(contentsOf: breeds)
+                }
+                print("BREEDS::: \(self.breeds)")
                 self.loading = false
             }
             

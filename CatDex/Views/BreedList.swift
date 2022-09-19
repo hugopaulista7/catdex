@@ -11,27 +11,25 @@ struct BreedList: View {
     @StateObject var viewModel: BreedListViewModel = BreedListViewModel()
     
     let columns = [
-        GridItem(.adaptive(minimum: 128))
+        GridItem(.adaptive(minimum: 152))
     ]
     
     var body: some View {
         ScrollView {
-            if (viewModel.loading) {
-                ProgressView{
-                    Text("Fetching furballs...")
-                        .frame(width: .infinity)
-                }.onAppear(perform: viewModel.fetchData)
-                    .progressViewStyle(CircularProgressViewStyle(tint: LightColor.color))
-                    .foregroundColor(LightColor.color)
-            } else {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(viewModel.breeds, id: \.self) { breed in
-                        BreedCard(breed: breed)
+            LazyVGrid(columns: columns, spacing: 16) {
+                ForEach(viewModel.breeds, id: \.self) { breed in
+                    BreedCard(breed: breed).onAppear {
+                        viewModel.loadMoreContentIfNeeded(currentItem: breed)
                     }
-                }.padding(.horizontal)
+                }
+            }.padding(.all, 16)
+            
+            if viewModel.loading {
+                FurballsProgressView()
             }
+            
         }
-        .background(AccentColor.color)
+        .background(Color.accent)
         .frame(maxWidth: .infinity)
     }
 }

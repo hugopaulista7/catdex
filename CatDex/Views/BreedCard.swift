@@ -11,7 +11,7 @@ struct BreedCard: View {
     
     let breed: Breed
     let height: CGFloat = 192.0
-    let width: CGFloat = 128.0
+    let width: CGFloat = 152.0
     
     var body: some View {
         ZStack {
@@ -24,7 +24,7 @@ struct BreedCard: View {
                         .cornerRadius(16.0)
                 },
                 placeholder: {
-                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint: LightColor.color))
+                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.light))
                         
                 }
             )
@@ -33,7 +33,7 @@ struct BreedCard: View {
                     Text(breed.name)
                         .font(.headline)
                         .fontWeight(.bold)
-                    .foregroundColor(LightColor.color)
+                        .foregroundColor(LightColor.color)
                     .padding(.all)
                     .frame(width: width)
                 }.background(MainColor.color.opacity(0.6))
@@ -43,9 +43,9 @@ struct BreedCard: View {
                 
             }.frame(width: width, height: height ,alignment: .bottom)
         }.frame(width: width, height: height)
-        .background(MainColor.color)
+            .background(MainColor.color)
         .cornerRadius(16.0)
-            
+        .shadow(radius: 8)
     }
     
 }
