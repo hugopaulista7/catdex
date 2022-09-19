@@ -20,19 +20,7 @@ struct BreedList: View {
             List(viewModel.breeds) {
                 breed in
                 HStack {
-                    AsyncImage(
-                        url: URL(string: breed.image.url),
-                        content: { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 128.0, height: 128.0)
-                        },
-                        placeholder: {
-                            ProgressView().frame(width: 128.0, height: 128.0)
-                        }
-                    )
-                        
-                    Text(breed.name).foregroundColor(AccentColor.color)
+                    BreedCard(breed: breed)
                 }
             }
         }

@@ -25,7 +25,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                MainColor.color.ignoresSafeArea()
                 VStack {
                     BreedList()
                 }
