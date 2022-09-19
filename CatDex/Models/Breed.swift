@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct Breed: Codable, Identifiable {
+struct Breed: Codable, Identifiable, Hashable {
+    static func == (lhs: Breed, rhs: Breed) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id: String
     let name: String
     let altNames: String?

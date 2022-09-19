@@ -24,21 +24,27 @@ struct BreedCard: View {
                         .cornerRadius(16.0)
                 },
                 placeholder: {
-                    ProgressView()
+                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint: LightColor.color))
+                        
                 }
             )
             VStack(spacing: 16.0) {
-                Section{
+                HStack {
                     Text(breed.name)
                         .font(.headline)
+                        .fontWeight(.bold)
                     .foregroundColor(LightColor.color)
                     .padding(.all)
-                }.background(AccentColor.color.opacity(0.3))
-                    .cornerRadius(16.0)
                     .frame(width: width)
+                }.background(MainColor.color.opacity(0.6))
+                    .roundedCorners(radius: 16.0, corners: [.bottomLeft, .bottomRight])
+                    .frame(width: width)
+                
                 
             }.frame(width: width, height: height ,alignment: .bottom)
         }.frame(width: width, height: height)
+        .background(MainColor.color)
+        .cornerRadius(16.0)
             
     }
     
@@ -50,4 +56,4 @@ struct BreedCard_Previews: PreviewProvider {
     }
 }
 
-let breedTest = Breed(id: "abys", name: "Abyssinian", altNames: nil, temperament: "Active, Energetic, Independent, Intelligent, Gentle", origin: "Egypt", description: "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.", lifeSpan: "14 - 15", adaptability: 5, affectionLevel: 5, childFriendly: 3, dogFriendly: 4, energyLevel: 5, intelligence: 5, healthIssues: 2, sheddingLevel: 2, socialNeeds: 5, strangerFriendly: 5, grooming: 1, vocalisation: 1, hairless: 0, natural: 1, rare: 0, shortLegs: 0, suppressedTail: 0, image: Image(id: "0XYvRd7oD", url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"))
+let breedTest = Breed(id: "abys", name: "Abysan", altNames: nil, temperament: "Active, Energetic, Independent, Intelligent, Gentle", origin: "Egypt", description: "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.", lifeSpan: "14 - 15", adaptability: 5, affectionLevel: 5, childFriendly: 3, dogFriendly: 4, energyLevel: 5, intelligence: 5, healthIssues: 2, sheddingLevel: 2, socialNeeds: 5, strangerFriendly: 5, grooming: 1, vocalisation: 1, hairless: 0, natural: 1, rare: 0, shortLegs: 0, suppressedTail: 0, image: Image(id: "0XYvRd7oD", url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"))

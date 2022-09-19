@@ -22,13 +22,20 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 }
 
 struct ContentView: View {
+    
+    init() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
                     BreedList()
                 }
-            }
+            }.background(AccentColor.color)
         .navigationTitle("CatDex")
         .navigationBarTitleDisplayMode(.inline)
         }
