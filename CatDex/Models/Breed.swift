@@ -40,10 +40,10 @@ struct Breed: Codable, Identifiable, Hashable {
     let rare: Int
     let shortLegs: Int
     let suppressedTail: Int
-    let image: Image
+    let image: Image?
 }
 
 struct Image: Codable {
-    let id: String
-    let url: String
+    let id: String?
+    let url: String?
 }

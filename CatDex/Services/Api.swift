@@ -26,6 +26,7 @@ class Api {
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))
+                return
             }
             
             guard let data = data else {

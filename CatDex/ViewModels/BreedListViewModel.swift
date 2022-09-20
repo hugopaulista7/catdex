@@ -15,7 +15,6 @@ class BreedListViewModel: ObservableObject {
     private var canLoadMorPages = true
     private var limit = 16
     
-    
     init() {
         fetchData()
     }
@@ -26,26 +25,23 @@ class BreedListViewModel: ObservableObject {
             return
         }
         
-        let thresholdIndex = breeds.index(breeds.endIndex, offsetBy: -16)
-        if breeds.firstIndex(where: {$0.id == item.id}) == thresholdIndex {
+        if item.id == breeds.last?.id  {
             fetchData()
         }
-        
     }
     
     private func fetchData() {
         loading = true
-        print("currentPage:: \(currentPage) ")
-        Api().callApi(basePath + "?limit=\(limit)&page=\(currentPage)", completion: {result in
+        Api().callApi(basePath + "?limit=\(limit)&page=\(currentPage)") {result in
             switch result {
             case .success(let data):
                 guard let dataUnwrapped = data else {return}
                 self.decode(data: dataUnwrapped)
             case .failure(let error):
-                print("Request failed with error: \(error)")
+                print("Request failed with error: \(error.localizedDescription)")
             }
             
-        })
+        }
 
     }
     
@@ -54,6 +50,7 @@ class BreedListViewModel: ObservableObject {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
             let breeds = try decoder.decode([Breed].self, from: data)
+            
             DispatchQueue.main.async {
                 self.currentPage += 1
                 if (self.breeds.count == 0) {
@@ -61,7 +58,6 @@ class BreedListViewModel: ObservableObject {
                 } else {
                     self.breeds.append(contentsOf: breeds)
                 }
-                print("BREEDS::: \(self.breeds)")
                 self.loading = false
             }
             

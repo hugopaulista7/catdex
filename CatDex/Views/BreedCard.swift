@@ -15,19 +15,22 @@ struct BreedCard: View {
     
     var body: some View {
         ZStack {
-            AsyncImage(
-                url: URL(string: breed.image.url),
-                content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: width, height: height)
-                        .cornerRadius(16.0)
-                },
-                placeholder: {
-                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.light))
+            if let image = breed.image , let url = image.url {
+                
+                AsyncImage(
+                    url: URL(string: url),
+                    content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: width, height: height)
+                            .cornerRadius(16.0)
+                    },
+                    placeholder: {
+                        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.light))
                         
-                }
-            )
+                    }
+                )
+            }
             VStack(spacing: 16.0) {
                 HStack {
                     Text(breed.name)
