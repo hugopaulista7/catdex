@@ -13,6 +13,8 @@ struct BreedCard: View {
     let height: CGFloat = 192.0
     let width: CGFloat = 152.0
     
+    @State private var showSheet = false
+    
     var body: some View {
         ZStack {
             if let image = breed.image , let url = image.url {
@@ -49,6 +51,11 @@ struct BreedCard: View {
             .background(MainColor.color)
         .cornerRadius(16.0)
         .shadow(radius: 8)
+        .sheet(isPresented: $showSheet) {
+            BreedSheet(breed: self.breed)
+        }.onTapGesture {
+            self.showSheet = !self.showSheet
+        }
     }
     
 }
