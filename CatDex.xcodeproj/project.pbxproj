@@ -24,6 +24,7 @@
 		3143C98128D920D9001DE6A9 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3143C98028D920D9001DE6A9 /* Color+Extensions.swift */; };
 		315106B528DB482600A697A5 /* BreedSheetRegularText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315106B428DB482600A697A5 /* BreedSheetRegularText.swift */; };
 		315106B728DB519400A697A5 /* BreedSheetVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315106B628DB519400A697A5 /* BreedSheetVGrid.swift */; };
+		315106B928DB5E2200A697A5 /* BreedSheetBooleanVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315106B828DB5E2200A697A5 /* BreedSheetBooleanVGrid.swift */; };
 		3185269328D8A2BC00D703C8 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185269228D8A2BC00D703C8 /* RoundedCorners.swift */; };
 		31CC5FF428D928EA0041D784 /* FurballsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CC5FF328D928EA0041D784 /* FurballsProgressView.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		3143C98028D920D9001DE6A9 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		315106B428DB482600A697A5 /* BreedSheetRegularText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedSheetRegularText.swift; sourceTree = "<group>"; };
 		315106B628DB519400A697A5 /* BreedSheetVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedSheetVGrid.swift; sourceTree = "<group>"; };
+		315106B828DB5E2200A697A5 /* BreedSheetBooleanVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedSheetBooleanVGrid.swift; sourceTree = "<group>"; };
 		3185269228D8A2BC00D703C8 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		31CC5FF328D928EA0041D784 /* FurballsProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurballsProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 				31216FBC28DA831F002B5418 /* Stars.swift */,
 				315106B428DB482600A697A5 /* BreedSheetRegularText.swift */,
 				315106B628DB519400A697A5 /* BreedSheetVGrid.swift */,
+				315106B828DB5E2200A697A5 /* BreedSheetBooleanVGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				3118701C28D6321700C6054D /* Api.swift in Sources */,
 				3118700F28D563F000C6054D /* ContentView.swift in Sources */,
 				315106B728DB519400A697A5 /* BreedSheetVGrid.swift in Sources */,
+				315106B928DB5E2200A697A5 /* BreedSheetBooleanVGrid.swift in Sources */,
 				3118702428D639FF00C6054D /* BreedListViewModel.swift in Sources */,
 				31216FBB28DA7DC7002B5418 /* BreedSheet.swift in Sources */,
 				3118702128D6329A00C6054D /* Breed.swift in Sources */,

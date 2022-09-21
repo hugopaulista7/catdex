@@ -36,13 +36,13 @@ struct BreedSheet: View {
                     .font(.system(size: 36, weight: .bold))
                     .foregroundColor(LightColor.color)
                 
-                BreedSheetRegularText(breed.description)
+                BreedSheetRegularText(breed.description).padding(.horizontal)
                 
                 if let altNames = breed.altNames {
                     HStack {
                         BreedSheetRegularText("Alternative names: ")
                         BreedSheetRegularText(altNames)
-                    }
+                    }.padding(.horizontal)
                 }
                 Group {
                     Group {
@@ -58,8 +58,9 @@ struct BreedSheet: View {
                             Text("Lifespan in years: ").font(.system(size: 16, weight: .bold)).foregroundColor(LightColor.color)
                             BreedSheetRegularText(breed.lifeSpan)
                         }
-                    }
+                    }.padding(.horizontal)
                     BreedSheetVGrid(breed: breed)
+                    BreedSheetBooleanVGrid(breed: breed).padding(.horizontal)
                     
                     
                 }
@@ -78,3 +79,4 @@ struct BreedSheet_Previews: PreviewProvider {
         BreedSheet(breed: breedTest)
     }
 }
+
