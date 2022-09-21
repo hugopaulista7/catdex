@@ -11,6 +11,8 @@ struct BreedSheet: View {
     var breed: Breed
     
     var body: some View {
+        
+        
         ScrollView(.vertical, showsIndicators: false) {
             if let image = breed.image, let url = image.url {
                 
@@ -29,25 +31,45 @@ struct BreedSheet: View {
                     )
                 }.frame(height: 480)
             }
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 24) {
                 Text(breed.name)
                     .font(.system(size: 36, weight: .bold))
                     .foregroundColor(LightColor.color)
                 
-                Text(breed.description)
-                    .padding(.top, 8)
-                    .font(.system(size: 16))
-                    .foregroundColor(LightColor.color)
+                BreedSheetRegularText(breed.description)
+                
+                if let altNames = breed.altNames {
+                    HStack {
+                        BreedSheetRegularText("Alternative names: ")
+                        BreedSheetRegularText(altNames)
+                    }
+                }
+                Group {
+                    Group {
+                        VStack(alignment:.leading, spacing: 4) {
+                            Text("Origin: ").font(.system(size: 16, weight: .bold)).foregroundColor(LightColor.color)
+                            BreedSheetRegularText(breed.origin)
+                        }
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Temperament: ").font(.system(size: 16, weight: .bold)).foregroundColor(LightColor.color)
+                            BreedSheetRegularText(breed.temperament)
+                        }
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Lifespan in years: ").font(.system(size: 16, weight: .bold)).foregroundColor(LightColor.color)
+                            BreedSheetRegularText(breed.lifeSpan)
+                        }
+                    }
+                    BreedSheetVGrid(breed: breed)
+                    
+                    
+                }
             }
             .padding(.all)
             .background(MainColor.color)
             .cornerRadius(16)
             .offset(y: -24)
-            .frame(width: UIScreen.main.bounds.width)
-            .edgesIgnoringSafeArea(.horizontal)
         }.edgesIgnoringSafeArea(.all)
-            .padding(.top)
-//            .background(MainColor.color.edgesIgnoringSafeArea(.all))
+            .background(MainColor.color)
     }
 }
 

@@ -33,6 +33,7 @@ struct Breed: Codable, Identifiable, Hashable {
     let sheddingLevel: Int
     let socialNeeds: Int
     let strangerFriendly: Int
+    // boolean
     let grooming: Int
     let vocalisation: Int
     let hairless: Int
@@ -40,10 +41,10 @@ struct Breed: Codable, Identifiable, Hashable {
     let rare: Int
     let shortLegs: Int
     let suppressedTail: Int
-    let image: Image?
+    let image: BreedImage?
 }
 
-struct Image: Codable {
+struct BreedImage: Codable {
     let id: String?
     let url: String?
 }
